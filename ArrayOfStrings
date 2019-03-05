@@ -1,0 +1,68 @@
+import java.io.File;
+import java.util.Scanner;
+ 
+public class Program {
+ 
+	public static void main(String[] args) {
+		File f;
+		Scanner sc;
+		double [] scores;
+		int numScores;
+		double pointsPossible;
+		double diff;
+		
+		//Open the scores.txt file
+		f = new File("scores.txt");
+		try {
+			sc = new Scanner(f);
+		}
+		catch(Exception e) {
+			System.out.println("Error opening file.");
+			System.out.println("Reading from Keyboard");
+			sc = new Scanner(System.in);
+		}
+		
+		//Find out how many scores are in the file
+		numScores = sc.nextInt();
+		
+		//Find out the highest score possible
+		pointsPossible = sc.nextDouble();
+		
+		//Read the scores into an array
+		scores = new double[numScores];
+		int i = 0;
+		while(i < numScores) {
+			scores[i] = sc.nextDouble();
+			i = i + 1;
+		}
+		
+		sc.close();  //Close the file
+		
+		//Add up all the scores
+		double sum = 0;
+		i = 0;
+		while(i < numScores) {
+			sum = sum + scores[i];
+			i = i + 1;
+		}
+		//Print the average score
+		//System.out.println("The average is " + (sum / numScores));
+		
+		//Place the highest score in index 0
+		for(int j = 0; j < scores.length; j++) {
+			if (scores[0] < scores[j]) {
+				scores[0] = scores[j];
+			}
+		}
+		System.out.println(scores[0] + " is your highest score" );
+		
+		diff = pointsPossible - scores[0];
+		for (int k = 0; k < scores.length; k++) {
+			scores[k] = scores[k] + diff;
+			System.out.println(scores[k]);
+		}
+		
+		
+	}
+ 
+}
