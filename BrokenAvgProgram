@@ -1,0 +1,21 @@
+
+public class Program {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+		//need to declare the array with [], add [] after double
+		double [] scores = {4.7, 4.6, 4.7, 5.0, 4.3, 5.0, 4.9};
+		
+		int i = 0;
+		double sum = 0;
+		while(i < 7) { //10 is out of range for the array; only 7 elements in array so change 10 to 7
+			sum = sum + scores[i]; //need to add each score to the total of sum, add "sum +"
+			i = i + 1;
+		}
+		System.out.println("The average score for this skater is " + sum / scores.length);
+		
+	}
+
+}
+//two too many }, delete 2 curly braces
